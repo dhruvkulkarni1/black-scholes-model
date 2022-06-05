@@ -1,0 +1,6 @@
+scipy
+yfinance
+numpy
+pandas
+pandas_datareader
+datetime
