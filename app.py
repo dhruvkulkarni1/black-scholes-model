@@ -49,7 +49,9 @@ def option_price(Stock, Strike, DTE, call_or_put):
   price = info.get("currentPrice")
   rate = get_RFR()
 
-  if call_or_put == "call" or "Call" or "CALL":
+  if call_or_put.lower() == "call":
     put_BSM(Price=price, Strike=Strike, DTE=DTE, RFR=rate, Volatility=vol)
-  if call_or_put == "put" or "Put" or "PUT":
+  if call_or_put.lower() == "put":
     call_BSM(Price=price, Strike=Strike, DTE=DTE, RFR=rate, Volatility=vol)
+
+option_price("NVDA", 280, 14, "call")
