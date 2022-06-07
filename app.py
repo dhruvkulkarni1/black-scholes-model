@@ -42,16 +42,16 @@ def get_RFR():
   risk_free_rate = rate * 0.01
   return risk_free_rate
 
-def option_price(Stock, Strike, DTE, call_or_put):
-  ticker = yf.Ticker(Stock)
-  vol = find_volatility(Stock)
+def option_price(stock, strike, dte, call_or_put):
+  ticker = yf.Ticker(stock)
+  vol = find_volatility(stock)
   info = ticker.info
   price = info.get("currentPrice")
   rate = get_RFR()
 
   if call_or_put.lower() == "call":
-    put_BSM(Price=price, Strike=Strike, DTE=DTE, RFR=rate, Volatility=vol)
+    put_BSM(Price=price, Strike=strike, DTE=dte, RFR=rate, Volatility=vol)
   if call_or_put.lower() == "put":
-    call_BSM(Price=price, Strike=Strike, DTE=DTE, RFR=rate, Volatility=vol)
+    call_BSM(Price=price, Strike=strike, DTE=dte, RFR=rate, Volatility=vol)
 
 option_price("NVDA", 280, 14, "call")
